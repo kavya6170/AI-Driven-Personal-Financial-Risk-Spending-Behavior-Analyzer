@@ -1,8 +1,11 @@
-model:
-  name: random_forest
-  max_depth: 10
-  n_estimators: 200
-
-training:
-  test_size: 0.2
-  random_state: 42
+COLUMNS:
+  Month: object
+  Total_Income: float
+  Total_Expense: float
+  Num_Transactions: int
+  Avg_Expense: float
+  Max_Expense: float
+  Low_Balance_Freq: int
+  Expense_Income_Ratio: float
+  Top_Category_Spend: float
+  Risk_Label: object

@@ -2,15 +2,12 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_url: D:/CDAC/Project/AI-Driven-Personal-Financial-Risk-Spending-Behavior-Analyzer/Dataset/final_financial_risk_dataset.csv
+  source_file: D:/CDAC/Project/AI-Driven-Personal-Financial-Risk-Spending-Behavior-Analyzer/Dataset/final_financial_risk_dataset.csv
   local_data_file: artifacts/data_ingestion/final_financial_risk_dataset.csv
-
-
 
 data_validation:
   root_dir: artifacts/data_validation
-  unzip_data_dir: artifacts/data_ingestion/winequality-red.csv
-  STATUS_FILE: artifacts/data_validation/status.txt
+  status_file: artifacts/data_validation/validation_status.txt
 
 
 

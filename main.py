@@ -1,13 +1,19 @@
-from src.MLOPs import logger
 from src.MLOPs.pipeline.stage_01_data_ingetion import DataIngestionTrainingPipeline
+from src.MLOPs.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
+from src.MLOPs import logger
 
-STAGE_NAME = "Data Ingestion stage"
+if __name__ == "__main__":
+    try:
+        logger.info(">>>>>> Data Ingestion stage started <<<<<<")
+        ingestion = DataIngestionTrainingPipeline()
+        ingestion.main()
+        logger.info(">>>>>> Data Ingestion stage completed <<<<<<\n")
 
-try:
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = DataIngestionTrainingPipeline()
-        obj.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-except Exception as e:
+        logger.info(">>>>>> Data Validation stage started <<<<<<")
+        validation = DataValidationTrainingPipeline()
+        validation.main()
+        logger.info(">>>>>> Data Validation stage completed <<<<<<\n")
+
+    except Exception as e:
         logger.exception(e)
         raise e
