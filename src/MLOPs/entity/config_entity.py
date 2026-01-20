@@ -15,3 +15,9 @@ class DataValidationConfig:
     data_path: Path
     schema_file: Path
     status_file: Path
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    data_path: Path
+    target_column: str

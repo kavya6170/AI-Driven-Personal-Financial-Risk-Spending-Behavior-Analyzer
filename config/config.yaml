@@ -10,10 +10,9 @@ data_validation:
   status_file: artifacts/data_validation/validation_status.txt
 
 
-
 data_transformation:
   root_dir: artifacts/data_transformation
-  data_path: artifacts/data_ingestion/winequality-red.csv
+  target_column: Risk_Label
 
 
 

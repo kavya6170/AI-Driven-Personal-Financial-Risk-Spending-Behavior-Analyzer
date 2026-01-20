@@ -1,6 +1,8 @@
 from src.MLOPs.pipeline.stage_01_data_ingetion import DataIngestionTrainingPipeline
 from src.MLOPs.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
+from src.MLOPs.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
 from src.MLOPs import logger
+
 
 if __name__ == "__main__":
     try:
@@ -13,6 +15,11 @@ if __name__ == "__main__":
         validation = DataValidationTrainingPipeline()
         validation.main()
         logger.info(">>>>>> Data Validation stage completed <<<<<<\n")
+
+        logger.info(">>>>>> Data Transformation stage started <<<<<<")
+        transformation = DataTransformationTrainingPipeline()
+        transformation.main()
+        logger.info(">>>>>> Data Transformation stage completed <<<<<<\n")
 
     except Exception as e:
         logger.exception(e)

@@ -1,6 +1,6 @@
 from src.MLOPs.constants import *
 from src.MLOPs.utils.common import read_yaml, create_directories
-from src.MLOPs.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from src.MLOPs.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -44,5 +44,16 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        return DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=self.config.data_ingestion.local_data_file,
+            target_column=config.target_column
+        )
 
 
