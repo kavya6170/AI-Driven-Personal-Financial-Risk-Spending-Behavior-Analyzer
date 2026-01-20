@@ -1,1 +1,8 @@
-key:val
+model:
+  name: random_forest
+  max_depth: 10
+  n_estimators: 200
+
+training:
+  test_size: 0.2
+  random_state: 42
