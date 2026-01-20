@@ -21,3 +21,17 @@ class DataTransformationConfig:
     root_dir: Path
     data_path: Path
     target_column: str
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    model_name: str
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    model_path: Path
+    test_features_path: Path
+    test_labels_path: Path

@@ -1,6 +1,6 @@
 from src.MLOPs.constants import *
 from src.MLOPs.utils.common import read_yaml, create_directories
-from src.MLOPs.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
+from src.MLOPs.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -56,4 +56,29 @@ class ConfigurationManager:
             target_column=config.target_column
         )
 
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path=self.config.data_transformation.root_dir,
+            test_data_path=self.config.data_transformation.root_dir,
+            model_name=config.model_name
+        )
+
+        return model_trainer_config
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        return ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            model_path=f"{self.config.model_trainer.root_dir}/model.pkl",
+            test_features_path=f"{self.config.data_transformation.root_dir}/X_test.csv",
+            test_labels_path=f"{self.config.data_transformation.root_dir}/y_test.csv"
+        )
 
