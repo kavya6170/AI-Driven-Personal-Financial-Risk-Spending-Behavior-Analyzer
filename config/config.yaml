@@ -20,7 +20,6 @@ model_trainer:
   model_name: logistic_regression
 
 
-
 model_evaluation:
   root_dir: artifacts/model_evaluation
 

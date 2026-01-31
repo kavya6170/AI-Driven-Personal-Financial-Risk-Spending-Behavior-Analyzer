@@ -27,14 +27,19 @@ class ModelTrainer:
             model = LogisticRegression(max_iter=1000)
             model.fit(X_train, y_train)
 
-            y_pred = model.predict(X_test)
-            acc = accuracy_score(y_test, y_pred)
+            y_train_pred = model.predict(X_train)
+            y_test_pred = model.predict(X_test)
 
-            mlflow.log_metric("accuracy", acc)
+            train_acc = accuracy_score(y_train, y_train_pred)
+            test_acc = accuracy_score(y_test, y_test_pred)
+
+            mlflow.log_metric("train_accuracy", train_acc)
+            mlflow.log_metric("test_accuracy", test_acc)
+
             mlflow.sklearn.log_model(model, "model")
 
             # Save model
-            model_path = f"{self.config.root_dir}/model.pkl"
+            model_path = f"{self.config.root_dir}/model.pkl"    
             joblib.dump(model, model_path)
 
             # 🔽 ADD THIS (STEP 2)
@@ -42,6 +47,6 @@ class ModelTrainer:
             with open(feature_path, "w") as f:
                 json.dump(feature_names, f)
 
-            logger.info(f"Model trained with accuracy: {acc}")
+            logger.info(f"Model trained with accuracy: {test_acc}")
             logger.info(f"Model saved at: {model_path}")
             logger.info(f"Feature names saved at: {feature_path}")
