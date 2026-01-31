@@ -24,7 +24,14 @@ class ModelTrainer:
         feature_names = list(X_train.columns)
 
         with mlflow.start_run():
-            model = LogisticRegression(max_iter=1000)
+            # Use multinomial for proper multiclass probability prediction
+            model = LogisticRegression(
+                C=self.config.C, 
+                max_iter=self.config.max_iter,
+                multi_class='multinomial',
+                solver='lbfgs',
+                random_state=42
+            )
             model.fit(X_train, y_train)
 
             y_train_pred = model.predict(X_train)

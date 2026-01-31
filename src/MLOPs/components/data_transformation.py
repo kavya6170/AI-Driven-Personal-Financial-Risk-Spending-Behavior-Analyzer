@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from src.MLOPs.entity.config_entity import DataTransformationConfig
@@ -38,5 +39,10 @@ class DataTransformation:
         X_test_num.to_csv(f"{self.config.root_dir}/X_test.csv", index=False)
         y_train.to_csv(f"{self.config.root_dir}/y_train.csv", index=False)
         y_test.to_csv(f"{self.config.root_dir}/y_test.csv", index=False)
+        
+        # Save the scaler for use during prediction
+        scaler_path = f"{self.config.root_dir}/scaler.pkl"
+        joblib.dump(scaler, scaler_path)
+        logger.info(f"Scaler saved at: {scaler_path}")
 
         logger.info("Data transformation completed successfully")

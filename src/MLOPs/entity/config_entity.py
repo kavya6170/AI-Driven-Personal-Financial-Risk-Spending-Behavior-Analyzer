@@ -28,6 +28,8 @@ class ModelTrainerConfig:
     train_data_path: Path
     test_data_path: Path
     model_name: str
+    C: float
+    max_iter: int
 
 @dataclass(frozen=True)
 class ModelEvaluationConfig:

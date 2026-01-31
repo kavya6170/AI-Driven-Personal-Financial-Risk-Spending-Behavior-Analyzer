@@ -58,6 +58,7 @@ class ConfigurationManager:
 
     def get_model_trainer_config(self) -> ModelTrainerConfig:
         config = self.config.model_trainer
+        params = self.params.model_trainer
 
         create_directories([config.root_dir])
 
@@ -65,7 +66,9 @@ class ConfigurationManager:
             root_dir=config.root_dir,
             train_data_path=self.config.data_transformation.root_dir,
             test_data_path=self.config.data_transformation.root_dir,
-            model_name=config.model_name
+            model_name=config.model_name,
+            C=params.C,
+            max_iter=params.max_iter
         )
 
         return model_trainer_config

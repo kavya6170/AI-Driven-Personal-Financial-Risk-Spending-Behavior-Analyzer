@@ -1,0 +1,22 @@
+artifact_path: file:D:/CDAC/Project/AI-Driven-Personal-Financial-Risk-Spending-Behavior-Analyzer/mlruns/0/models/m-0b7802ddb9614b499cbf76c53cdd19e3/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.8.1
+model_id: m-0b7802ddb9614b499cbf76c53cdd19e3
+model_size_bytes: 1125
+model_uuid: m-0b7802ddb9614b499cbf76c53cdd19e3
+prompts: null
+run_id: 88422f9dffd448b893f6b2e9f05e315b
+utc_time_created: '2026-01-31 05:06:01.134345'
