@@ -2,8 +2,8 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_file: D:/CDAC/Project/AI-Driven-Personal-Financial-Risk-Spending-Behavior-Analyzer/Dataset/final_financial_risk_dataset.csv
-  local_data_file: artifacts/data_ingestion/final_financial_risk_dataset.csv
+  source_file: artifacts/bank_statement_processing/processed_features.csv
+  local_data_file: artifacts/data_ingestion/bank_risk_data.csv
 
 data_validation:
   root_dir: artifacts/data_validation
@@ -22,6 +22,21 @@ model_trainer:
 
 model_evaluation:
   root_dir: artifacts/model_evaluation
+
+
+bank_statement_processing:
+  root_dir: artifacts/bank_statement_processing
+  bank_statements_file: Dataset/bank_statements.csv
+  processed_data_file: artifacts/bank_statement_processing/processed_features.csv
+  category_keywords_path: config/category_keywords.yaml
+  low_balance_threshold: 5000.0
+  mapping:
+    type_col: type
+    amount_col: amount
+    balance_col: currentBalance
+    timestamp_col: transactionTimestamp
+    narration_col: narration
+    reference_col: reference
 
 
 

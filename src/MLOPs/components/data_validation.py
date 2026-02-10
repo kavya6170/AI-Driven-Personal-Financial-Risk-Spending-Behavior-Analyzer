@@ -15,8 +15,11 @@ class DataValidation:
 
             for col in schema_columns:
                 if col not in df.columns:
-                    validation_status = False
-                    logger.error(f"Missing column: {col}")
+                    if col == 'Risk_Label':
+                        logger.warning(f"Target column {col} missing. This is OK for prediction but not for training.")
+                    else:
+                        validation_status = False
+                        logger.error(f"Missing column: {col}")
 
             with open(self.config.status_file, "w") as f:
                 f.write(f"Validation status: {validation_status}")

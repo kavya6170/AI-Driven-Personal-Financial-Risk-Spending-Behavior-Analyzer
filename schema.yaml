@@ -9,3 +9,14 @@ COLUMNS:
   Expense_Income_Ratio: float
   Top_Category_Spend: float
   Risk_Label: object
+
+TRANSACTION_COLUMNS:
+  type: object
+  mode: object
+  amount: float
+  currentBalance: float
+  transactionTimestamp: object
+  valueDate: object
+  txnId: object
+  narration: object
+  reference: float

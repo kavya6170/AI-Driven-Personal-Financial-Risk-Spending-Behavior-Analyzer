@@ -14,3 +14,6 @@ Flask
 Flask-Cors
 fastapi
 uvicorn
+pdfplumber
+openpyxl
+python-dateutil

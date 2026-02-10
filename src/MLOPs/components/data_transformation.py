@@ -16,6 +16,18 @@ class DataTransformation:
     def transform_data(self):
         df = pd.read_csv(self.config.data_path)
 
+        if self.config.target_column not in df.columns:
+            logger.warning(f"Target column '{self.config.target_column}' not found. Transformation will proceed for inference only.")
+            
+            # Simple scaling for inference if a scaler already exists, otherwise skip
+            numeric_cols = df.select_dtypes(include='number').columns
+            create_directories([self.config.root_dir])
+            
+            # Save the raw numeric features for check
+            df[numeric_cols].to_csv(f"{self.config.root_dir}/transformed_features.csv", index=False)
+            logger.info(f"Numeric features saved for inference at {self.config.root_dir}/transformed_features.csv")
+            return
+
         X = df.drop(columns=[self.config.target_column])
         y = df[self.config.target_column]
 

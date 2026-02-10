@@ -1,0 +1,83 @@
+categories:
+  food_and_dining:
+    - swiggy
+    - zomato
+    - restaurant
+    - cafe
+    - food
+    - eat
+    - kitchen
+    - bakery
+    - hotel
+  shopping:
+    - amazon
+    - flipkart
+    - myntra
+    - shopping
+    - mall
+    - store
+    - fashion
+    - lifestyle
+    - clothes
+  bills_and_utilities:
+    - electricity
+    - water
+    - gas
+    - internet
+    - mobile
+    - recharge
+    - bill
+    - jio
+    - airtel
+    - vi
+    - dth
+    - tv
+  entertainment:
+    - netflix
+    - prime
+    - hotstar
+    - movie
+    - cinema
+    - theatre
+    - club
+    - bar
+    - pub
+  healthcare:
+    - hospital
+    - clinic
+    - pharmacy
+    - medical
+    - doctor
+    - health
+    - meds
+    - diagnostics
+  transportation:
+    - uber
+    - ola
+    - bus
+    - train
+    - metro
+    - fuel
+    - petrol
+    - diesel
+    - auto
+    - travel
+  rent_and_emi:
+    - rent
+    - house
+    - emi
+    - loan
+    - morgage
+  salary_and_income:
+    - salary
+    - credit
+    - refund
+    - interest
+    - dividend
+    - paycheck
+  others:
+    - upi
+    - transfer
+    - cash
+    - withdrawal
+    - miscellaneous

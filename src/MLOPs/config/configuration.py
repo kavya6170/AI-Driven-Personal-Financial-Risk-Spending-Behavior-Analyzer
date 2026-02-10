@@ -1,6 +1,7 @@
 from src.MLOPs.constants import *
 from src.MLOPs.utils.common import read_yaml, create_directories
-from src.MLOPs.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig
+from src.MLOPs.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig, 
+                                            ModelTrainerConfig, ModelEvaluationConfig, BankStatementProcessingConfig, BankStatementMapping)
 
 class ConfigurationManager:
     def __init__(
@@ -85,3 +86,27 @@ class ConfigurationManager:
             test_labels_path=f"{self.config.data_transformation.root_dir}/y_test.csv"
         )
 
+    
+    def get_bank_statement_processing_config(self) -> BankStatementProcessingConfig:
+        config = self.config.bank_statement_processing
+        mapping_config = config.mapping
+
+        create_directories([config.root_dir])
+
+        mapping = BankStatementMapping(
+            type_col=mapping_config.type_col,
+            amount_col=mapping_config.amount_col,
+            balance_col=mapping_config.balance_col,
+            timestamp_col=mapping_config.timestamp_col,
+            narration_col=mapping_config.narration_col,
+            reference_col=mapping_config.reference_col
+        )
+
+        return BankStatementProcessingConfig(
+            root_dir=Path(config.root_dir),
+            bank_statements_file=Path(config.bank_statements_file),
+            processed_data_file=Path(config.processed_data_file),
+            category_keywords_path=Path(config.category_keywords_path),
+            mapping=mapping,
+            low_balance_threshold=config.low_balance_threshold
+        )

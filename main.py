@@ -1,3 +1,4 @@
+from src.MLOPs.pipeline.stage_00_bank_statement_processing import BankStatementProcessingPipeline
 from src.MLOPs.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from src.MLOPs.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from src.MLOPs.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
@@ -9,6 +10,11 @@ from src.MLOPs import logger
 
 if __name__ == "__main__":
     try:
+        logger.info(">>>>>> Bank Statement Processing stage started <<<<<<")
+        statement_proc = BankStatementProcessingPipeline()
+        statement_proc.main()
+        logger.info(">>>>>> Bank Statement Processing stage completed <<<<<<\n")
+
         logger.info(">>>>>> Data Ingestion stage started <<<<<<")
         ingestion = DataIngestionTrainingPipeline()
         ingestion.main()
